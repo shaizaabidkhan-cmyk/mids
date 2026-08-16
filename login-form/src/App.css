@@ -1,0 +1,597 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #294f5d;
+  background: #edf9fc;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+/* =========================
+   PAGE
+========================= */
+
+.app {
+  min-height: 100vh;
+  padding: 30px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e9f8fc 0%,
+      #f8fcfd 50%,
+      #e5f6fa 100%
+    );
+}
+
+/* Soft background decoration */
+
+.soft-circle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.circle-one {
+  width: 230px;
+  height: 230px;
+
+  top: -90px;
+  left: -70px;
+
+  background: #cceff6;
+
+  opacity: 0.55;
+
+  animation: moveCircle 8s ease-in-out infinite;
+}
+
+.circle-two {
+  width: 170px;
+  height: 170px;
+
+  right: -60px;
+  bottom: -50px;
+
+  background: #d6f3f7;
+
+  opacity: 0.7;
+
+  animation: moveCircle 9s ease-in-out infinite reverse;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.login-card {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 450px;
+
+  padding: 42px;
+
+  background: #ffffff;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 18px 45px rgba(42, 102, 117, 0.12);
+
+  animation: cardIn 0.6s ease;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.login-header {
+  margin-bottom: 32px;
+}
+
+.welcome-text {
+  margin-bottom: 9px;
+
+  color: #50aabd;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+}
+
+.login-header h1 {
+  margin-bottom: 10px;
+
+  color: #234e5c;
+
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.subtitle {
+  max-width: 360px;
+
+  color: #78929a;
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* =========================
+   INPUT
+========================= */
+
+.input-group {
+  margin-bottom: 21px;
+}
+
+.input-group label,
+.password-top label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #315c69;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.input-group label span,
+.password-top label span {
+  margin-left: 3px;
+  color: #dc7777;
+}
+
+.password-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.password-top label {
+  margin-bottom: 8px;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+
+  border: 1.5px solid #d6e9ee;
+  border-radius: 11px;
+
+  background: #fbfdfe;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.input-wrapper:hover {
+  border-color: #afd6df;
+}
+
+.input-wrapper:focus-within {
+  border-color: #52b2c8;
+
+  box-shadow:
+    0 0 0 3px rgba(82, 178, 200, 0.1);
+
+  transform: translateY(-1px);
+}
+
+.input-icon {
+  width: 42px;
+
+  display: flex;
+  justify-content: center;
+
+  color: #91bcc5;
+
+  font-size: 13px;
+}
+
+.input-wrapper input {
+  flex: 1;
+
+  width: 100%;
+
+  padding: 14px 8px 14px 0;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #294f5d;
+
+  font-size: 14px;
+}
+
+.input-wrapper input::placeholder {
+  color: #a7bbc0;
+}
+
+/* =========================
+   FORGOT PASSWORD
+========================= */
+
+.forgot-button {
+  margin-bottom: 8px;
+
+  border: none;
+  background: none;
+
+  color: #4da9bd;
+
+  font-size: 12px;
+
+  cursor: pointer;
+
+  transition: color 0.2s ease;
+}
+
+.forgot-button:hover {
+  color: #287f94;
+}
+
+/* =========================
+   SHOW PASSWORD
+========================= */
+
+.show-button {
+  margin-right: 10px;
+
+  border: none;
+  background: transparent;
+
+  color: #43a1b6;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: color 0.2s ease;
+}
+
+.show-button:hover {
+  color: #277f93;
+}
+
+/* =========================
+   ERRORS
+========================= */
+
+.input-error {
+  border-color: #df8585;
+
+  animation: shake 0.3s ease;
+}
+
+.error-message {
+  margin-top: 7px;
+
+  color: #d46f6f;
+
+  font-size: 12px;
+
+  animation: errorIn 0.25s ease;
+}
+
+/* =========================
+   REMEMBER
+========================= */
+
+.remember {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin: 2px 0 22px;
+
+  color: #718b93;
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+.remember input {
+  width: 14px;
+  height: 14px;
+
+  accent-color: #4db2c7;
+
+  cursor: pointer;
+}
+
+/* =========================
+   LOGIN BUTTON
+========================= */
+
+.login-button {
+  position: relative;
+
+  overflow: hidden;
+
+  width: 100%;
+  height: 51px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  border: none;
+  border-radius: 11px;
+
+  background: #4eafc5;
+
+  color: white;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 7px 16px rgba(62, 157, 180, 0.2);
+
+  transition:
+    transform 0.22s ease,
+    background 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.login-button::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -100%;
+
+  width: 55%;
+  height: 100%;
+
+  background: rgba(255, 255, 255, 0.2);
+
+  transform: skewX(-20deg);
+
+  transition: left 0.5s ease;
+}
+
+.login-button:hover {
+  transform: translateY(-2px);
+
+  background: #419fb6;
+
+  box-shadow:
+    0 11px 22px rgba(62, 157, 180, 0.28);
+}
+
+.login-button:hover::after {
+  left: 125%;
+}
+
+.login-button .arrow {
+  font-size: 18px;
+
+  transition:
+    transform 0.25s ease;
+}
+
+.login-button:hover .arrow {
+  transform: translateX(5px);
+}
+
+.login-button:active {
+  transform: translateY(0) scale(0.985);
+}
+
+/* =========================
+   SUCCESS
+========================= */
+
+.success-message {
+  margin-top: 14px;
+
+  padding: 10px;
+
+  border-radius: 9px;
+
+  background: #effafa;
+
+  color: #3d929f;
+
+  text-align: center;
+
+  font-size: 12px;
+
+  animation: errorIn 0.3s ease;
+}
+
+/* =========================
+   SIGN UP
+========================= */
+
+.signup-text {
+  margin-top: 25px;
+  padding-top: 20px;
+
+  border-top: 1px solid #edf2f3;
+
+  text-align: center;
+
+  color: #82969c;
+
+  font-size: 12px;
+}
+
+.signup-text button {
+  margin-left: 5px;
+
+  border: none;
+  background: transparent;
+
+  color: #399bb2;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.signup-text button:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-4px);
+  }
+
+  50% {
+    transform: translateX(4px);
+  }
+
+  75% {
+    transform: translateX(-2px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes errorIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes moveCircle {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(12px, 15px);
+  }
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 700px) {
+  .login-card {
+    max-width: 430px;
+    padding: 35px 30px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 480px) {
+  .app {
+    padding: 20px 15px;
+  }
+
+  .login-card {
+    padding: 32px 23px;
+
+    border-radius: 17px;
+  }
+
+  .login-header h1 {
+    font-size: 27px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+
+  .circle-one {
+    width: 150px;
+    height: 150px;
+  }
+
+  .circle-two {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+@media (max-width: 350px) {
+  .login-card {
+    padding: 27px 18px;
+  }
+
+  .login-header h1 {
+    font-size: 24px;
+  }
+
+  .password-top {
+    align-items: flex-start;
+  }
+
+  .forgot-button {
+    font-size: 11px;
+  }
+}
